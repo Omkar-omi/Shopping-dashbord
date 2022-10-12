@@ -5,6 +5,7 @@ import { UserAuth } from "../contexts/AuthContext";
 const Login = () => {
   const { signin, user } = UserAuth();
 
+  // hard coded login details for easy access
   const [email, setEmail] = useState('test@test.com');
   const [password, setPassword] = useState('123456');
   const [isPending, setIsPending] = useState(false);

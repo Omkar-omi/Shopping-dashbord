@@ -3,8 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import '../index.css'
-import { doc, updateDoc, } from "firebase/firestore";
-import db from '../firebase'
 
 const MoreDetails = (props) => {
 
