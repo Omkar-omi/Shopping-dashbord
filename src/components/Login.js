@@ -26,12 +26,10 @@ const Login = () => {
       await signin(email, password)
       navigate("/home")
       setIsPending(false)
-      console.log(user);
     } catch (e) {
       setError("Email or Password dosen't match")
       console.log(e.message);
       setIsPending(false)
-
     }
   }
   return (

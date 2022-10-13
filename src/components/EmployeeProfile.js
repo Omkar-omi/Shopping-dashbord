@@ -40,7 +40,6 @@ const EmployeeProfile = () => {
     setIsCheckedIn(false)
     setIsCheckedOut(true)
     const docRef = doc(db, 'employees', userId)
-    console.log(userId);
     updateDoc(docRef, {
       checkout: serverTimestamp(),
       isCheckedIn: false
@@ -49,7 +48,6 @@ const EmployeeProfile = () => {
 
   useEffect(() => {
     const user = localStorage.getItem("email")
-    console.log(user);
     if (user == null) {
       navigate("/")
     }
@@ -59,7 +57,6 @@ const EmployeeProfile = () => {
 
   const getData = async () => {
     let email = localStorage.getItem("email")
-    console.log(email);
     const docRef = query(collection(db, "employees"), where("email", "==", email));
     onSnapshot(docRef, (snapshot) => {
       snapshot.forEach((doc) => {
@@ -71,9 +68,6 @@ const EmployeeProfile = () => {
       })
     })
   }
-
-
-  // const { name, emailId, phno, dob, address, id, checkInTime, checkOutTime } = useFetch(query(collection(db, "employees"), where("email", "==", user.email ? user.email : "")))
 
   return (
     <div className=" container pt-5">
@@ -115,10 +109,6 @@ const EmployeeProfile = () => {
           {isCheckedin && <button className="col-5 p-3 btn btn-success" id="check-in" onClick={handelCheckIn} disabled>Checked In</button>}
           {!isCheckedOut && <button className="col-5 p-3 btn btn-danger" id="check-out" onClick={handelCheckOut}>Check-out</button>}
           {isCheckedOut && <button className="col-5 p-3 btn btn-danger" id="check-out" onClick={handelCheckOut} disabled>Checked out</button>}
-        </div>
-        <div className="d-flex flex-row gap-5  justify-content-center">
-          {/* <div className="text-success">{a.checkin}</div>
-          <div className="text-danger">{a.checkout}</div> */}
         </div>
       </div>
     </div >

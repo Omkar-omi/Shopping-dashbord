@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../contexts/AuthContext";
 
-const Login = () => {
+const UserLogin = () => {
   const { signin, user } = UserAuth();
 
   // hard coded login details for easy access
-  const [email, setEmail] = useState('admin@admin.com');
+  const [email, setEmail] = useState('prasad@test.com');
   const [password, setPassword] = useState('123456');
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState('')
@@ -14,9 +14,8 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/adminhomepage")
+      navigate("/userlogin")
     }
-
   }, [])
 
   const handelLogin = async (e) => {
@@ -25,13 +24,12 @@ const Login = () => {
     setIsPending(true)
     try {
       await signin(email, password)
-      navigate("/adminhomepage")
+      navigate("/Shoppinghome")
       setIsPending(false)
     } catch (e) {
       setError("Email or Password dosen't match")
       console.log(e.message);
       setIsPending(false)
-
     }
   }
   return (
@@ -39,7 +37,7 @@ const Login = () => {
       <form className="d-flex justify-content-center mt-5 p-5" onSubmit={handelLogin} >
         <div className="col-lg-4 border p-5 rounded">
           <div className="d-flex flex-column align-items-center">
-            <div className="fs-1 text-primary">Admin Login</div>
+            <div className="fs-1 text-primary">Login</div>
             <div className="text-danger fs-5">{error}</div>
           </div>
           <div className="d-flex flex-column justify-content-center mt-4">
@@ -54,11 +52,10 @@ const Login = () => {
             {!isPending && <button className="btn btn-primary">Login</button>}
             {isPending && <button disabled>Logging in...</button>}
           </div>
-          <Link className="d-flex justify-content-center" to={"/"}>Employee Login</Link>
         </div>
       </form >
     </div>
   );
 }
 
-export default Login;
+export default UserLogin;

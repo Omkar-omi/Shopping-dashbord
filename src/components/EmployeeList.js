@@ -1,15 +1,11 @@
-import { collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import db from '../firebase'
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import MoreDetails from "./MoreDetails";
 
 
 const EmployeeList = () => {
-
   const [employees, setEmployees] = useState([]);
-  const navigate = useNavigate();
-
   useEffect(() => {
     getData()
   }, []);
@@ -35,13 +31,11 @@ const EmployeeList = () => {
               <div>Address: {emp.address}</div>
               <div>Email: {emp.email}</div>
               <div>Phoneno: {emp.phoneno}</div>
-              <MoreDetails checkin={emp.checkin} checkout={emp.checkout} id={emp.id} name={emp.name} isCheckedIn={emp.isCheckedIn} />
+              <MoreDetails checkin={(emp.checkin).toDate().toString()} checkout={(emp.checkout).toDate().toString()} id={emp.id} name={emp.name} isCheckedIn={emp.isCheckedIn} />
               <hr />
             </div>
           )}
         </div>
-
-
       </div >
     </div >
   )
