@@ -1,13 +1,9 @@
-import { updateProfile } from 'firebase/auth';
-import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from "../contexts/AuthContext";
-import { auth } from '../firebase';
-import logo from '../images/vindiata_logo.png'
 
 function ShopingNavbar() {
   const { user, logout } = UserAuth();
@@ -27,7 +23,7 @@ function ShopingNavbar() {
     <Navbar bg="light" expand="lg" fixed='top'>
       <Container>
         <Navbar.Brand href="/Shoppinghome">
-          <img alt="logo" src={logo} width="150" height="30" className="d-inline-block align-top" />{' '}
+          Home
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">

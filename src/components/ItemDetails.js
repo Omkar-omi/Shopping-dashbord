@@ -23,7 +23,7 @@ const ItemDetails = () => {
 
   const handelAddToCart = async (e) => {
 
-    if (qty != 0) {
+    if (qty !== 0) {
       const docRef = doc(db, "users", user.uid)
       updateDoc(docRef, {
         cart: arrayUnion(`Quantity:${qty} || Product:${e.target.value}`),
